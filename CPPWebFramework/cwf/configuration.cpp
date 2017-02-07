@@ -184,4 +184,9 @@ namespace CWF
     {
         maxUploadFile = value;
     }
+
+    bool Configuration::isValid()
+    {
+        return !host.isNull() && port != 0;
+    }
 }

@@ -193,6 +193,10 @@ namespace CWF
          * @param const qint64 &value : Max upload file size in bytes.
          */
         void setMaxUploadFile(const qint64 &value);
+        /**
+         * @brief Returns whether this configuration is valid (does point to a host and port)
+         */
+        bool isValid();
     };
 }
 
