@@ -26,6 +26,7 @@ namespace CWF
          void removeFirstBar(QString &path) const;
          void putFirstBar(QString &path) const;         
          QByteArray readAll(const QString &fileName, QFileDevice::FileError &fileErro) const;
+         static bool exists(const QString &path);
     };
 }
 #endif // FILEMANAGER_H

@@ -59,4 +59,9 @@ namespace CWF
         }
         return file.readAll();
     }
+
+    bool FileManager::exists(const QString &path)
+    {
+        return QFile(path).exists();
+    }
 }
