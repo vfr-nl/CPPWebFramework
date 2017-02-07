@@ -14,7 +14,7 @@ namespace CWF
         const QString configFile = getConfigFile(serverFilesPath);
         if(!configFile.isEmpty())
         {
-            QSettings settings(configFile, QSettings::Format::IniFormat);
+            QSettings settings(configFile, QSettings::IniFormat);
             settings.beginGroup("config");
             host.setAddress(settings.value("host").toString());
             port                  = settings.value("port").toInt();
