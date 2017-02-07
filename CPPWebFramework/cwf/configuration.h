@@ -65,7 +65,12 @@ namespace CWF
          * }
          * @endcode
          */
-        explicit Configuration(QString serverFilesPath = "");
+        explicit Configuration(const QString & serverFilesPath = "");
+        /**
+         * @brief Returns the path to the config file
+         * @param serverFilesPath the path to the server files
+         */
+        QString getConfigFile(const QString &serverFilesPath) const;
         /**
          * @brief Returns the timeOut property that will be used by the server to expire threads that are not in use.
          * Such threads will be restarted as needed. The default timeOut is 30000 milliseconds (30 seconds).

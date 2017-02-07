@@ -9,13 +9,12 @@
 
 namespace CWF
 {
-    Configuration::Configuration(QString serverFilesPath)
+    Configuration::Configuration(const QString &serverFilesPath)
     {
-        if(!serverFilesPath.isEmpty())
+        const QString configFile = getConfigFile(serverFilesPath);
+        if(!configFile.isEmpty())
         {
-            FileManager().removeLastBar(serverFilesPath);
-            serverFilesPath += "/config/CPPWeb.ini";
-            QSettings settings(serverFilesPath, QSettings::Format::IniFormat);
+            QSettings settings(configFile, QSettings::Format::IniFormat);
             settings.beginGroup("config");
             host.setAddress(settings.value("host").toString());
             port                  = settings.value("port").toInt();
@@ -46,6 +45,18 @@ namespace CWF
             if(!sslCertFile.isEmpty())
                 sslCertFile          = path + "/" + sslCertFile;
         }
+    }
+
+    QString Configuration::getConfigFile(const QString &serverFilesPath) const
+    {
+        if (serverFilesPath.isEmpty())
+            return QString();
+
+        QString configFile = serverFilesPath;
+        FileManager().removeLastBar(configFile);
+        configFile += "/config/CPPWeb.ini";
+
+        return configFile;
     }
 
     int Configuration::getTimeOut() const
