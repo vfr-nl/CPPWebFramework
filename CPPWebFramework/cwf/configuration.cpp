@@ -56,6 +56,12 @@ namespace CWF
         FileManager().removeLastBar(configFile);
         configFile += "/config/CPPWeb.ini";
 
+        if(!FileManager::exists(configFile))
+        {
+            qDebug() << "The server config file (CPPWeb.ini) could not be found.";
+            return QString();
+        }
+
         return configFile;
     }
 
