@@ -31,6 +31,7 @@ namespace CWF
             accessCPPWebIni       = settings.value("accessCPPWebIni").toBool();
             suffix                = settings.value("suffix").toString();
             accessServerPages     = settings.value("accessServerPages").toBool();
+            settings.endGroup();
 
             FileManager fileManager;
             fileManager.removeLastBar(path);
